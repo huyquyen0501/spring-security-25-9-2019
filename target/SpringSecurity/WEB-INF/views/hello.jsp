@@ -6,13 +6,7 @@
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
 
-	<sec:authorize access="hasRole('ROLE_STUDENT')">
-		<!-- For login user -->
-		<c:url value="/logout" var="logoutUrl" />
-		<form action="${logoutUrl}" method="post" id="logoutForm">
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-		</form>
+
 		<script>
 			function formSubmit() {
 				document.getElementById("logoutForm").submit();
@@ -27,6 +21,6 @@
 		</c:if>
 
 
-	</sec:authorize>
+	
 </body>
 </html>

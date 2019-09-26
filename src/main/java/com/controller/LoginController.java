@@ -17,44 +17,44 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security + Hibernate Example");
+		model.addObject("title", "");
 		model.addObject("message", "This is default page!");
 		model.setViewName("hello");
 		return model;
 
 	}
 
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public ModelAndView adminPage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security + Hibernate Example");
+		model.addObject("title", "");
 		model.addObject("message", "This page is for ROLE_ADMIN only!");
 		model.setViewName("admin");
 
 		return model;
 
 	}
-	@RequestMapping(value = "/teacher**", method = RequestMethod.GET)
+	@RequestMapping(value = "/teacher", method = RequestMethod.GET)
 	public ModelAndView teacherPage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security + Hibernate Example");
+		model.addObject("title", "");
 		model.addObject("message", "This page is for Role_teacher only!");
-		model.setViewName("admin");
+		model.setViewName("teacher");
 
 		return model;
 
 	}
-	@RequestMapping(value = "/student**", method = RequestMethod.GET)
+	@RequestMapping(value = "/student", method = RequestMethod.GET)
 	public ModelAndView studentPage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security + Hibernate Example");
+		model.addObject("title", "");
 		model.addObject("message", "This page is for Student only!");
 		model.setViewName("admin");
 
