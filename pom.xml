@@ -8,7 +8,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<jdk.version>1.8</jdk.version>
+<<<<<<< HEAD
 		<spring.version>4.3.11.RELEASE</spring.version>
+=======
+		<spring.version>5.1.9.RELEASE</spring.version>
+>>>>>>> 68803eaa8456230f3915636f6067cd64163ec513
 		<spring.hibernate></spring.hibernate>
 		<spring.security.version>4.2.13.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
