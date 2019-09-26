@@ -1,7 +1,7 @@
 package com.entity;
 
 import java.util.HashSet;
-import java.util.List;
+
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -10,14 +10,14 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.springframework.security.core.GrantedAuthority;
+
 
 @Entity
 
 public class User {
 	private int id;
 	private String name;
-	private boolean sex;
+	private String sex;
 	private String address;
 	private String username;
 	private String password;
@@ -33,7 +33,7 @@ public class User {
 		this.enable = enable;
 	}
 
-	public User(int id, String name, boolean sex, String address, String username, String password, boolean enable,
+	public User(int id, String name, String sex, String address, String username, String password, boolean enable,
 			Set<UserRole> userRole) {
 		super();
 		this.id = id;
@@ -75,11 +75,11 @@ public class User {
 		this.name = name;
 	}
 
-	public boolean isSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(boolean sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 

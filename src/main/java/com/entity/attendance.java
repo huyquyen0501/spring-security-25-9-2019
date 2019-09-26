@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.springframework.validation.annotation.Validated;
+
 
 import lombok.Getter;
 import lombok.Setter;

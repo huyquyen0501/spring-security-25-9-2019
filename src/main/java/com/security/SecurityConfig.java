@@ -3,6 +3,7 @@ package com.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
+
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -10,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.service.UserDetailsService;
+
 
 @Configuration
 @EnableWebSecurity
@@ -45,7 +46,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	public PasswordEncoder passwordEncoder() {
-		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		PasswordEncoder encoder = new BCryptPasswordEncoder(10);
 		return encoder;
 	}
+	@Override
+	 protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+          .withUser("mashigood12").password(passwordEncoder().encode("huytrau12")).roles("ADMIN")
+          .and()
+          .withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("STUDENT")
+          .and()
+          .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("TEACHER");
+    }
 }

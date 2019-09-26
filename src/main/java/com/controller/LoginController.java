@@ -23,7 +23,7 @@ public class LoginController {
 		ModelAndView model = new ModelAndView();
 		model.addObject("title", "");
 		model.addObject("message", "This is default page!");
-		model.setViewName("hello");
+		model.setViewName("register");
 		return model;
 
 	}

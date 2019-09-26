@@ -34,10 +34,12 @@
 	border: 1px solid #000;
 }
 </style>
+
+	
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-
+	<form id='Register' name='Register' action="<c:url value='/register'/>" method='GET'></form>
 	<div id="login-box">
 
 		<h3>Login with Username and Password</h3>
@@ -49,8 +51,7 @@
 			<div class="msg">${msg}</div>
 		</c:if>
 
-		<form name='loginForm'
-			action="<c:url value='/login' />" method='POST'>
+		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
 
 			<table>
 				<tr>
@@ -64,7 +65,12 @@
 				<tr>
 					<td colspan='2'><input name="submit" type="submit"
 						value="submit" /></td>
+					<td colspan='2'><button name="register" type="submit"
+						value="register" form="Register"></button></td>
+
 				</tr>
+
+
 			</table>
 
 			<input type="hidden" name="${_csrf.parameterName}"
@@ -74,5 +80,6 @@
 	</div>
 
 </body>
-</html>	<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
+</html>
+<input type="hidden" name="${_csrf.parameterName}"
+	value="${_csrf.token}" />
