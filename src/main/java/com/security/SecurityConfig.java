@@ -2,6 +2,7 @@ package com.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -38,24 +39,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin()
 		.loginPage("/login").failureUrl("/login?error")
+		.loginProcessingUrl("j_spring_security_login")
+		.defaultSuccessUrl("/")
 		.usernameParameter("username")
 		.passwordParameter("password")
 		.and().logout().logoutSuccessUrl("/login?logout")
+		.deleteCookies("JSESSIONID")
 		.and().csrf()
 		.and().exceptionHandling().accessDeniedPage("/403");
 	}
-
+	@Bean
 	public PasswordEncoder passwordEncoder() {
 		PasswordEncoder encoder = new BCryptPasswordEncoder(10);
 		return encoder;
 	}
-	@Override
-	 protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-          .withUser("mashigood12").password(passwordEncoder().encode("huytrau12")).roles("ADMIN")
-          .and()
-          .withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("STUDENT")
-          .and()
-          .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("TEACHER");
-    }
+	
 }
