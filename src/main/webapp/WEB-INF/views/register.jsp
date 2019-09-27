@@ -19,7 +19,7 @@
 <body>
 	<div class="container">
 		<h2>Register</h2>
-		<form action="/register" name="register" method="post">
+		<form action="/do-register" name="register" method="post">
 			<div class="form-group">
 				<label for="text">name:</label> <input type="text"
 					class="form-control" id="name" placeholder="name" name="name"
@@ -43,10 +43,11 @@
 			</div>
 			<div>
 				<label for="text">sex</label> 
-				<input type="checkbox" class="check"name="check1" id="check1"> 
-				<label class="layout"for="check1">Nam</label> 
-				<input type="checkbox" class="check"name="check2" id="check2"> 
-				<label class="layout"for="check2">Nu</label>
+				<input type="text" 
+				class="form-control" id="sex" placeholder="Nam/nu"
+					name="sex" required />
+					
+				
 
 			</div>
 	
