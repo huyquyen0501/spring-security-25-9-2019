@@ -46,7 +46,7 @@
 				<input type = "text" class="form-control" id="sex" placeholder="Nam/Nu" name="sex" required="required"/>
 
 			</div>
-	
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 	<div class="row">
 		<button type="submit" class="button">Register</button>

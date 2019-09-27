@@ -21,13 +21,13 @@ public class RegisterLogin {
 		return "register";
 	}
 @PostMapping("register")
-public String register(@RequestParam("name")String name, @RequestParam("address")String address,@RequestParam("sex")String sex, @RequestParam("username")String username, @RequestParam("password") String password, HttpSession session, ModelAndView model) {
-	
+public String registerProcess(@RequestParam("name")String name, @RequestParam("address")String address,@RequestParam("sex")String sex, @RequestParam("username")String username, @RequestParam("password") String password, HttpSession session, ModelAndView model) {
+	try {
 	User user=userDAO.registerUser(name, sex, address, username, password);
-	if(user == null) {
-		return "redirect:"+"/register";
+	} catch (Exception e) {
+		System.out.println("Cos looix");
+		return "redirect:"+"/exception";
 	}
-	
 	return "redirect:"+"/login";
 	
 }

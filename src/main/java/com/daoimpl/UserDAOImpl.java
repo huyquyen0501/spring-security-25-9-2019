@@ -56,8 +56,8 @@ public class UserDAOImpl implements UserDAO {
 		user.setAddress(address);
 		user.setUsername(username);
 		user.setPassword(passwordencode);
+		user.setEnable(true);
 		session.save(user);
-		session.getTransaction().commit();
 		return user;
 		
 	}
