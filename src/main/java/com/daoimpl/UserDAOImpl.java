@@ -26,9 +26,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 	@Override
 	public User findByUserName(String username) {
-		String hql="form User where username= :username";
+		String hql="from User where username= :username";
 		Session session= sessionFactory.getCurrentSession();
-		ArrayList<User> user= (ArrayList<User>) session.createQuery(hql).setParameter(0, username).list();
+		ArrayList<User> user= (ArrayList<User>) session.createQuery(hql).setParameter("username", username).list();
 		if(user.size()>0) {
 			return user.get(0);
 		}else {

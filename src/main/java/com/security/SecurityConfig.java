@@ -2,6 +2,7 @@ package com.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,6 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	@Qualifier("userDetailsService")
 	org.springframework.security.core.userdetails.UserDetailsService userDetailsService;
+	
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -44,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().csrf()
 		.and().exceptionHandling().accessDeniedPage("/403");
 	}
-
+	@Bean
 	public PasswordEncoder passwordEncoder() {
 		PasswordEncoder encoder = new BCryptPasswordEncoder(10);
 		return encoder;

@@ -9,10 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 
 @Entity
+@Table(name = "users")
 
 public class User {
 	private int id;
@@ -21,6 +23,7 @@ public class User {
 	private String address;
 	private String username;
 	private String password;
+	@Column(name = "enabled")
 	private boolean enable;
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
@@ -50,6 +53,7 @@ public class User {
 		super();
 		this.username = username;
 		this.password = password;
+		
 		this.enable = enable;
 		this.userRole = userRole;
 	}
@@ -110,7 +114,7 @@ public class User {
 		this.password = password;
 	}
 
-	@Column(name = "enable", nullable = false)
+	@Column(name = "enabled", nullable = false)
 	public boolean isEnable() {
 		return enable;
 	}
