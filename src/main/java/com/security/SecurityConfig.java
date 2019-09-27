@@ -49,13 +49,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		PasswordEncoder encoder = new BCryptPasswordEncoder(10);
 		return encoder;
 	}
-	@Override
-	 protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-          .withUser("mashigood12").password(passwordEncoder().encode("huytrau12")).roles("ADMIN")
-          .and()
-          .withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("STUDENT")
-          .and()
-          .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("TEACHER");
-    }
+	
 }
