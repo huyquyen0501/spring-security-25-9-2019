@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.compare.Compare;
 import com.dao.UserDAO;
 import com.entity.User;
 
@@ -39,8 +40,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public ArrayList<User> getAll() {
 		Session session= sessionFactory.getCurrentSession();
-		ArrayList<User> list= (ArrayList<User>) session.createQuery("form User").list();
-	
+		@SuppressWarnings("unchecked")
+		ArrayList<User> list= (ArrayList<User>) session.createQuery("form User")
+				.setFirstResult(0)
+				.setMaxResults(10)
+				.list();
+		list.sort(new Compare());
 		return list;
 	}
 
@@ -93,5 +98,18 @@ public class UserDAOImpl implements UserDAO {
 
 		return result;
 	}
+	@Override
+	public int addRoleForUser(String username, String role) {
+		// TODO Auto-generated method stub
+		Session session= sessionFactory.getCurrentSession();
+		Query query= session.createQuery("update User set role= :role where username= :username")
+				.setParameter("role", "ROLE_"+ role)
+				.setParameter("username", username);
+		int result= query.executeUpdate();
+		
+		return result;
+	}
+
+	
 
 }

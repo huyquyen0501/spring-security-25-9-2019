@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().logout().logoutSuccessUrl("/login?logout")
 		.and().csrf()
 		.and().exceptionHandling().accessDeniedPage("/403");
+//		http.sessionManagement().maximumSessions(1).expiredUrl("/login?expired");
 	}
 	@Bean
 	public PasswordEncoder passwordEncoder() {

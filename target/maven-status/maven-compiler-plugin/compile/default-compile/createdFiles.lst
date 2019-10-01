@@ -1,10 +1,13 @@
+com\controller\AdminController.class
 com\daoimpl\UserDAOImpl.class
+com\service\UserDetailsService.class
+com\dao\UserDAO.class
+com\compare\Compare.class
+com\dao\CourseDAO.class
 com\entity\Course.class
 com\controller\LoginController.class
-com\service\UserDetailsService.class
-com\entity\attendance.class
-com\dao\UserDAO.class
 com\security\WebSecurityInitializer.class
+com\controller\RegisterLogin.class
 com\security\SecurityConfig.class
 com\entity\User.class
 com\entity\UserRole.class

@@ -25,7 +25,6 @@ public String registerProcess(@RequestParam("name")String name, @RequestParam("a
 	try {
 	User user=userDAO.registerUser(name, sex, address, username, password);
 	} catch (Exception e) {
-		System.out.println("Cos looix");
 		return "redirect:"+"/exception";
 	}
 	return "redirect:"+"/login";

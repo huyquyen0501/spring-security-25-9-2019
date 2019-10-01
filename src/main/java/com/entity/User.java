@@ -8,10 +8,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
-
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "users")
@@ -27,7 +31,7 @@ public class User {
 	private boolean enable;
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
-	
+	private Set<Course> courseList;
 
 	public User(String username, String password, boolean enable) {
 		super();
@@ -53,14 +57,15 @@ public class User {
 		super();
 		this.username = username;
 		this.password = password;
-		
+
 		this.enable = enable;
 		this.userRole = userRole;
 	}
 
 	public User() {
-		
+
 	}
+
 	@Column(name = "id")
 
 	public int getId() {
@@ -130,6 +135,16 @@ public class User {
 
 	public void setUserRole(Set<UserRole> userRole) {
 		this.userRole = userRole;
+	}
+
+	@ManyToMany
+	@JoinTable(name = "user_course", joinColumns = @JoinColumn(referencedColumnName = "username"), inverseJoinColumns = @JoinColumn(referencedColumnName = "id"))
+	public Set<Course> getCourseList() {
+		return courseList;
+	}
+
+	public void setCourseList(Set<Course> courseList) {
+		this.courseList = courseList;
 	}
 
 }

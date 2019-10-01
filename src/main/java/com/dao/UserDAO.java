@@ -11,5 +11,8 @@ public interface UserDAO {
 	int updateUser(String name,  String address,String username);
 	int deactiveUser(String username, boolean enable);
 	int deleteUser(String username);
+	int addRoleForUser(String username,String role);
+	
+	
 	
 }

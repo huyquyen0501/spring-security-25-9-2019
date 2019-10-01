@@ -11,33 +11,56 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
 @Entity(name = "course")
 public class Course implements Serializable {
 	@Id
-	  @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
-	private Set<attendance> listattend = new HashSet<attendance>();
 	private String name;
 	private Date startedDate;
-
 	private Date endDate;
-	@ManyToOne
-	@JoinColumn(name = "idteacher")
-	private User user;
+	@ManyToMany
+	@JoinTable(name = "user_course", joinColumns = @JoinColumn(referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(referencedColumnName = "username"))
+	private Set<User> userList;
 	private String detail;
 	private int hocphi;
-	
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Date getStartedDate() {
+		return startedDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
 
 	
+	public Set<User> getUserList() {
+		return userList;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public int getHocphi() {
+		return hocphi;
+	}
 
 }

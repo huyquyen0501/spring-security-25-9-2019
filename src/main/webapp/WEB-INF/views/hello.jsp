@@ -5,7 +5,12 @@
 <body>
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
-
+	<ul>
+		<li><a href="admin">ADMIN</a></li>
+		<li><a href= "teacher">TEACHER</a></li>
+		<li><a href="student">STUDENT</a></li>
+		
+	</ul>
 
 	<script>
 		function formSubmit() {

@@ -186,7 +186,7 @@
 	</dependencies>
 	<!-- end test -->
 	<build>
-		<finalName>SpringSecurity</finalName>
+		<finalName>quanlydaotao</finalName>
 		<plugins>
 
 			<plugin>
